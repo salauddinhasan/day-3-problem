@@ -32,29 +32,44 @@
 // Hint: Loop through and track the largest value found.
 
 // fist solution
-function findMax(arr) {
-  let max = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-  return max;
-}
+// function findMax(arr) {
+//   let max = arr[0];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > max) {
+//       max = arr[i];
+//     }
+//   }
+//   return max;
+// }
 
-console.log(findMax([3, 1, 7, 2, 9]));
+// console.log(findMax([3, 1, 7, 2, 9]));
 
-// secund solution
-function findMax(arr) {
-  return arr.reduce((max, current) => (current > max ? current : max), arr[0]);
-}
-console.log(findMax([3, 1, 7, 2, 9]));
+// // secund solution
+// function findMax(arr) {
+//   return arr.reduce((max, current) => (current > max ? current : max), arr[0]);
+// }
+// console.log(findMax([3, 1, 7, 2, 9]));
 
 // Problem 13: Remove Duplicates from Array  [Easy]
 // Description: Write a function removeDuplicates(arr) that returns a new array with duplicate values removed.
 // Example:
 // Input: [1, 2, 2, 3, 3, 4]  → Output: [1, 2, 3, 4]
 // Hint: Use Set or filter() with indexOf().
+
+// fist solution
+function removeDuplicates(arr) {
+  let mySet = new Set(arr);
+  return [...mySet];
+}
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+
+// secund solution
+function removeDuplicates(arr) {
+   return arr.filter((item, index) => {
+    return arr.indexOf(item)=== index;
+   })
+}
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
 
 // Problem 14: Flatten a Nested Array  [Medium]
 // Description: Write a function flattenArray(arr) that flattens one level of a nested array.
