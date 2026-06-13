@@ -7,23 +7,23 @@
 // Hint: Use reduce() or a for loop.
 
 // first solution
-// function sumArray(arr) {
-//   let sum = 0;
-//   for (let i = 0; i < arr.length; i++) {
-//     sum = sum + arr[i];
-//   }
-//   return sum;
-// }
-// console.log(sumArray([1, 2, 3, 4, 5]));
+function sumArray(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  return sum;
+}
+console.log(sumArray([1, 2, 3, 4, 5]));
 
-// //  secund solution
-// function sumArray(arr) {
-//   return arr.reduce(
-//     (accumulator, currentValue) => accumulator + currentValue,
-//     0,
-//   );
-// }
-// console.log(sumArray([1, 2, 3, 4, 5]));
+//  secund solution
+function sumArray(arr) {
+  return arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
+}
+console.log(sumArray([1, 2, 3, 4, 5]));
 
 // Problem 12: Find Maximum Value in Array  [Easy]
 // Description: Write a function findMax(arr) that returns the largest number in an array without using Math.max().
@@ -32,23 +32,23 @@
 // Hint: Loop through and track the largest value found.
 
 // fist solution
-// function findMax(arr) {
-//   let max = arr[0];
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] > max) {
-//       max = arr[i];
-//     }
-//   }
-//   return max;
-// }
+function findMax(arr) {
+  let max = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
 
-// console.log(findMax([3, 1, 7, 2, 9]));
+console.log(findMax([3, 1, 7, 2, 9]));
 
-// // secund solution
-// function findMax(arr) {
-//   return arr.reduce((max, current) => (current > max ? current : max), arr[0]);
-// }
-// console.log(findMax([3, 1, 7, 2, 9]));
+// secund solution
+function findMax(arr) {
+  return arr.reduce((max, current) => (current > max ? current : max), arr[0]);
+}
+console.log(findMax([3, 1, 7, 2, 9]));
 
 // Problem 13: Remove Duplicates from Array  [Easy]
 // Description: Write a function removeDuplicates(arr) that returns a new array with duplicate values removed.
@@ -57,19 +57,19 @@
 // Hint: Use Set or filter() with indexOf().
 
 // fist solution
-// function removeDuplicates(arr) {
-//   let mySet = new Set(arr);
-//   return [...mySet];
-// }
-// console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+function removeDuplicates(arr) {
+  let mySet = new Set(arr);
+  return [...mySet];
+}
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
 
-// // secund solution
-// function removeDuplicates(arr) {
-//    return arr.filter((item, index) => {
-//     return arr.indexOf(item)=== index;
-//    })
-// }
-// console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+// secund solution
+function removeDuplicates(arr) {
+  return arr.filter((item, index) => {
+    return arr.indexOf(item) === index;
+  });
+}
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
 
 // Problem 14: Flatten a Nested Array  [Medium]
 // Description: Write a function flattenArray(arr) that flattens one level of a nested array.
@@ -77,13 +77,13 @@
 // Input: [1, [2, 3], [4, 5]]  → Output: [1, 2, 3, 4, 5]
 // Hint: Use flat() or reduce() with concat().
 
-// secund solution
+// fist solution
 function flattenArray(arr) {
   return arr.flat();
 }
 console.log(flattenArray([1, [2, 3], [4, 5]]));
 
-// secund solution
+// // secund solution
 function flattenArray(arr) {
   return arr.reduce((accumulator, current) => {
     return accumulator.concat(current);
@@ -96,3 +96,24 @@ console.log(flattenArray([1, [2, 3], [4, 5]]));
 // Example:
 // Input: [1,2,3,4,5], 2  → Output: [[1,2],[3,4],[5]]
 // Hint: Use a while loop with slice().
+
+function chunkArray(arr, size) {
+  let chunked = [];
+
+  for (let element of arr) {
+   
+    let lastChunk = chunked[chunked.length - 1];
+ 
+    if (!lastChunk || lastChunk.length === size) {
+      // তাহলে একটি নতুন চ্যাংক তৈরি করে তাতে উপাদানটি রেখে মেইন বাক্সে পুশ করি
+      chunked.push([element]);
+    } else {
+      // আর যদি চ্যাংক খালি থাকে (মানে ফুল না হয়), তবে সেই আগের চ্যাংকরে ভেতরেই উপাদানটি ঢুকিয়ে দিই
+      lastChunk.push(element);
+    }
+  }
+
+  return chunked;
+}
+
+console.log(chunkArray([1, 2, 3, 4, 5], 2));
