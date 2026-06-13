@@ -7,29 +7,48 @@
 // Hint: Use reduce() or a for loop.
 
 // first solution
-function sumArray(arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum = sum + arr[i];
-  }
-  return sum;
-}
-console.log(sumArray([1, 2, 3, 4, 5]));
+// function sumArray(arr) {
+//   let sum = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     sum = sum + arr[i];
+//   }
+//   return sum;
+// }
+// console.log(sumArray([1, 2, 3, 4, 5]));
 
-//  secund solution
-function sumArray(arr) {
-  return arr.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0,
-  );
-}
-console.log(sumArray([1, 2, 3, 4, 5]));
+// //  secund solution
+// function sumArray(arr) {
+//   return arr.reduce(
+//     (accumulator, currentValue) => accumulator + currentValue,
+//     0,
+//   );
+// }
+// console.log(sumArray([1, 2, 3, 4, 5]));
 
 // Problem 12: Find Maximum Value in Array  [Easy]
 // Description: Write a function findMax(arr) that returns the largest number in an array without using Math.max().
 // Example:
 // Input: [3, 1, 7, 2, 9]  → Output: 9
 // Hint: Loop through and track the largest value found.
+
+// fist solution
+function findMax(arr) {
+  let max = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+console.log(findMax([3, 1, 7, 2, 9]));
+
+// secund solution
+function findMax(arr) {
+  return arr.reduce((max, current) => (current > max ? current : max), arr[0]);
+}
+console.log(findMax([3, 1, 7, 2, 9]));
 
 // Problem 13: Remove Duplicates from Array  [Easy]
 // Description: Write a function removeDuplicates(arr) that returns a new array with duplicate values removed.
